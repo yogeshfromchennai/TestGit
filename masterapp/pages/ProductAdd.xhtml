@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:p="http://primefaces.prime.com.tr/ui"> 
+  <SCRIPT LANGUAGE="JavaScript">	
+		function validation()
+		{
+					if ( document.forms["productForm"].elements["productForm:productid"].value.length == 0 )
+		{
+			alert('Please enter the value of PRODUCTID');
+			document.forms["productForm"].elements["productForm:productid"].focus();
+			return false;
+		}
+
+
+			return true;
+		}
+	</SCRIPT>
+
+   <f:view contentType="text/html">
+ 	<h:head>
+            <f:loadBundle basename="ApplicationResources" var="msgs"/>
+        <h3><title><h:outputText value="#{msgs.PRODUCT_PAGE_TITLE}" /></title></h3>
+    </h:head>
+
+    <body>
+        <p:panel>
+			 <f:facet name="header">
+               <center> <h3><h:outputText value="#{msgs.PRODUCT_ADD_PAGE_TITLE}" /></h3></center>
+			 </f:facet>
+                    <br/>
+                <p:messages style="color:red;"/>
+                    <br/>
+
+                    <h:form id="productForm">
+                        <table align="center">
+                        <tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_PRODUCTID}" />
+<h:outputText value="*" style="color:red;" />
+</td>
+<td>
+<p:inputText size="3" maxlength="3" id="productid" value="#{ProductBean.product.productid}"  />
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_NAME}" />
+</td>
+<td>
+<p:inputText   readonly="false"  size="20" maxlength="20" id="name" value="#{ProductBean.product.name}"  />
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_CATEGORYID}" />
+</td>
+<td>
+<p:inputText   readonly="false"  size="7" maxlength="7" id="categoryid" value="#{ProductBean.product.categoryid}"  />
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_DESCRIPTION}" />
+</td>
+<td>
+<p:inputText   readonly="false"  size="50" maxlength="50" id="description" value="#{ProductBean.product.description}"  />
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_MANUFACTUREDATE}" />
+<h:outputText value=" (dd/MM/yyyy)" style="color:red;" />
+</td>
+<td>
+<p:calendar   readonly="false"  size="10" maxlength="10" id="manufacturedate" pattern="dd/MM/yyyy" value="#{ProductBean.product.manufacturedate}" showOn="button" >
+<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+</p:calendar> 
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_PRICE}" />
+</td>
+<td>
+<p:inputText   readonly="false"  size="7" maxlength="7" id="price" value="#{ProductBean.product.price}"  />
+</td>
+</tr>
+<tr>
+<td>
+<h:outputText value="#{msgs.PRODUCT_QUANTITY}" />
+</td>
+<td>
+<p:inputText   readonly="false"  size="7" maxlength="7" id="quantity" value="#{ProductBean.product.quantity}"  />
+</td>
+</tr>
+  </table><table align="center">                          
+                          <tr><td><p:commandButton id="save" action="#{ProductBean.createNewRecord}" value="#{msgs.PRODUCT_BUTTON_ADD}" onclick="return validation();" ajax="false"/>&#160;
+
+                          <p:commandButton id="list" action="#{ProductBean.getList}" value="#{msgs.PRODUCT_BUTTON_LIST}"  immediate="true" ajax="false"/>
+</td></tr></table>
+                    </h:form>
+            </p:panel>
+		</body>
+        </f:view>
+</html>

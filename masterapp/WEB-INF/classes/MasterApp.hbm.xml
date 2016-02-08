@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name ="com.hex.vo.Product" table="PRODUCT" lazy="false">
+<id column="PRODUCTID" name="productid" type="java.lang.Integer">
+<generator class="assigned"/>
+</id>
+<property column="NAME" length="20" name="name" type="java.lang.String"/>
+<property column="CATEGORYID" length="7" name="categoryid" type="java.lang.Integer"/>
+<property column="DESCRIPTION" length="50" name="description" type="java.lang.String"/>
+<property column="MANUFACTUREDATE" length="7" name="manufacturedate" type="java.util.Date"/>
+<property column="PRICE" length="7" name="price" type="java.lang.Integer"/>
+<property column="QUANTITY" length="7" name="quantity" type="java.lang.Integer"/>
+<property column="CREATEDDATE" length="7" name="createddate" type="java.util.Date"/>
+<property column="CREATEDBY" length="30" name="createdby" type="java.lang.String"/>
+<property column="MODIFIEDDATE" length="7" name="modifieddate" type="java.util.Date"/>
+<property column="MODIFIEDBY" length="30" name="modifiedby" type="java.lang.String"/>
+</class>
+
+
+</hibernate-mapping>
